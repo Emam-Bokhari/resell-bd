@@ -1,0 +1,64 @@
+import type { Metadata } from "next";
+
+import "./globals.css";
+import { Toaster } from "sonner";
+import Providers from "@/providers/Providers";
+import { Poppins } from "next/font/google";
+
+const poppins = Poppins({
+  weight: ["400", "500", "600", "700"],
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const poppinsClassName: string = poppins.className;
+
+export const metadata: Metadata = {
+  title: "ResellBD - Buy & Sell Used Products in Bangladesh",
+  description:
+    "ResellBD is the leading platform for buying and selling second-hand products in Bangladesh. Find the best deals on used electronics, furniture, vehicles, and more.",
+  keywords: [
+    "buy and sell",
+    "second-hand",
+    "used products",
+    "resell",
+    "Bangladesh",
+    " electronics",
+    "furniture",
+    "vehicles",
+    "online marketplace",
+  ],
+  referrer: "origin-when-cross-origin",
+  robots: "index, follow",
+  publisher: "ResellBD Inc.",
+  authors: [
+    { name: "Moshfiqur Rahman", url: "https://www.facebook.com/emambokhari99" },
+  ],
+  creator: "Moshfiqur Rahman",
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en">
+      <body className={`${poppinsClassName}  bg-[#F8F9FA]`}>
+        <Providers>
+          {children}
+          <Toaster
+            expand
+            position="top-right"
+            toastOptions={{
+              style: {
+                background: "#F7B84B",
+                color: "#000000",
+              },
+            }}
+          />
+        </Providers>
+      </body>
+    </html>
+  );
+}
